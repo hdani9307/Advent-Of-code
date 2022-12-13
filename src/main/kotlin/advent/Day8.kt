@@ -26,40 +26,52 @@ class Day8 {
                 e.printStackTrace()
             }
 
-            var counter = 0
+            var topScore = 0
 
             for ((i, column) in matrix.withIndex()) {
                 for ((j, value) in column.withIndex()) {
-                    if (i == 0 || i == matrix.size - 1) {
-                        counter++;
-                        continue;
-                    }
-                    if (j == 0 || j == matrix[i].size - 1) {
-                        counter++;
-                        continue;
-                    }
-                    if (isVisible(matrix, i, j, value)) {
-                        counter++;
+                    val score = calculateScore(matrix, i, j, value)
+                    if (score > topScore) {
+                        topScore = score
                     }
                 }
             }
 
-            println(counter)
+            println(topScore)
         }
     }
 
-    private fun isVisible(matrix: MutableList<MutableList<Int>>, rowIndex: Int, columnIndex: Int, value: Int): Boolean {
+    private fun calculateScore(
+        matrix: MutableList<MutableList<Int>>,
+        rowIndex: Int,
+        columnIndex: Int,
+        value: Int
+    ): Int {
         val row = matrix[rowIndex]
+
+        var left = 0
+        var right = 0
+        var top = 0
+        var down = 0
 
         var before = row.subList(0, columnIndex)
         var after = row.subList(columnIndex + 1, row.size)
 
-        if (before.all { it < value }) {
-            return true
+        for (i in before.reversed()) {
+            if (i < value) {
+                left++
+            } else {
+                left++
+                break
+            }
         }
-
-        if (after.all { it < value }) {
-            return true
+        for (i in after) {
+            if (i < value) {
+                right++
+            } else {
+                right++
+                break
+            }
         }
 
         val column = mutableListOf<Int>()
@@ -69,14 +81,25 @@ class Day8 {
         before = column.subList(0, rowIndex)
         after = column.subList(rowIndex + 1, column.size)
 
-        if (before.all { it < value }) {
-            return true
+        for (i in before.reversed()) {
+            if (i < value) {
+                top++
+            } else {
+                top++
+                break
+            }
         }
 
-        if (after.all { it < value }) {
-            return true
+        for (i in after) {
+            if (i < value) {
+                down++
+            } else {
+                down++
+                break
+            }
         }
 
-        return false
+        //199272
+        return left * right * top * down
     }
 }
