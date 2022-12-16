@@ -9,8 +9,6 @@ import kotlin.math.sign
 
 class Day9 {
     fun run() {
-
-
         val rope = mutableListOf<Pair<Int, Int>>()
         for (i in 0 until 10) {
             rope.add(Pair(0, 0))
