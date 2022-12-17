@@ -1,0 +1,66 @@
+        var monkeys = listOf(
+            Monkey(
+                items = mutableListOf(52, 78, 79, 63, 51, 94),
+                test = 5,
+                testTrueThrow = 1,
+                testFalseThrow = 6,
+            ) {
+                it * 13
+            },
+            Monkey(
+                items = mutableListOf(77, 94, 70, 83, 53),
+                test = 7,
+                testTrueThrow = 5,
+                testFalseThrow = 3,
+            ) {
+                it + 3
+            },
+            Monkey(
+                items = mutableListOf(98, 50, 76),
+                test = 13,
+                testTrueThrow = 0,
+                testFalseThrow = 6,
+            ) {
+                it * it
+            },
+            Monkey(
+                items = mutableListOf(92, 91, 61, 75, 99, 63, 84, 69),
+                test = 11,
+                testTrueThrow = 5,
+                testFalseThrow = 7,
+            ) {
+                it + 5
+            },
+            Monkey(
+                items = mutableListOf(51, 53, 83, 52),
+                test = 3,
+                testTrueThrow = 2,
+                testFalseThrow = 0,
+            ) {
+                it + 7
+            },
+            Monkey(
+                items = mutableListOf(76, 76),
+                test = 2,
+                testTrueThrow = 4,
+                testFalseThrow = 7,
+            ) {
+                it + 4
+            },
+            Monkey(
+                items = mutableListOf(75, 59, 93, 69, 76, 96, 65),
+                test = 17,
+                testTrueThrow = 1,
+                testFalseThrow = 3,
+            ) {
+                it * 19
+            },
+            Monkey(
+                items = mutableListOf(89),
+                test = 19,
+                testTrueThrow = 2,
+                testFalseThrow = 4,
+            ) {
+                it + 2
+            }
+        )
