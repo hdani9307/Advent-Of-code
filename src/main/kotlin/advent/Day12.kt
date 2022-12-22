@@ -37,7 +37,6 @@ class Day12 {
     private val adjVertices: MutableMap<Vertex, MutableSet<Vertex>> = mutableMapOf()
     private val matrix = mutableListOf<MutableList<Pair<Int, Char>>>()
 
-    var visited = mutableSetOf<Vertex>()
     fun xNeighbour(vertex: Vertex, x: Int) {
         try {
             val height = matrix[x][vertex.y].first
@@ -75,13 +74,13 @@ class Day12 {
 
     fun run() {
         readInput()
-        var root: Vertex? = null
+        val roots = mutableListOf<Vertex>()
         for (x in matrix.withIndex()) {
             for (y in x.value.withIndex()) {
                 val m = matrix[x.index][y.index]
                 val vertex = Vertex(m.first, m.second, x.index, y.index)
-                if (m.second == 'S') {
-                    root = vertex
+                if (m.first == 'a'.code) {
+                    roots.add(vertex)
                 }
 
                 vertexes.add(vertex)
@@ -90,8 +89,21 @@ class Day12 {
         for (vertex in vertexes) {
             addEdges(vertex)
         }
-        findEndPoint(root!!)
-        for (x in 0 until matrix.size) {
+        var min = Int.MAX_VALUE
+        for (root in roots) {
+            for (adjVertex in adjVertices) {
+                adjVertex.key.dist = 0
+                for (v in adjVertex.value) {
+                    v.dist = 0
+                }
+            }
+            var steps = findEndPoint(root)
+            if(steps < min){
+                min = steps
+            }
+        }
+        println(min)
+        /*for (x in 0 until matrix.size) {
             for (y in 0 until matrix[0].size) {
                 if (visited.any { it.x == x && it.y == y }) {
                     print(".")
@@ -99,22 +111,20 @@ class Day12 {
                     print("#")
                 }
             }
-            println()
-        }
+        }*/
     }
 
-
-    fun findEndPoint(from: Vertex) {
+    fun findEndPoint(from: Vertex): Int {
         var start = from
         var queue = LinkedList<Vertex>();
+        var visited = mutableSetOf<Vertex>()
         queue.add(start)
         visited.add(start)
 
         while (!queue.isEmpty()) {
             val current = queue.pop();
             if (current.sign == 'E') {
-                println(current.dist)
-                return
+                return current.dist
             }
 
             adjVertices[current]!!.forEach {
@@ -124,10 +134,11 @@ class Day12 {
                     visited.add(it)
                 }
             }
-            if (queue.isEmpty()) {
-                println("${current.x} ${current.y}")
-            }
+//            if (queue.isEmpty()) {
+//                println("${current.x} ${current.y}")
+//            }
         }
+        return Int.MAX_VALUE
     }
     //257 low
 
