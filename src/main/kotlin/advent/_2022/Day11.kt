@@ -1,4 +1,4 @@
-package advent
+package advent._2022
 
 class Day11 {
     fun run() {

@@ -1,9 +1,8 @@
-package advent
+package advent._2022
 
 import java.io.BufferedReader
 import java.io.FileReader
 import java.io.IOException
-import kotlin.math.abs
 import kotlin.math.absoluteValue
 import kotlin.math.sign
 

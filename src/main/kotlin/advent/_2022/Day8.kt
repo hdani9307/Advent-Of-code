@@ -1,4 +1,4 @@
-package advent
+package advent._2022
 
 import java.io.BufferedReader
 import java.io.FileReader
