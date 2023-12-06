@@ -7,10 +7,7 @@ public class Main {
     public static void main(String[] args) {
         var now = System.currentTimeMillis();
         try {
-
-            new Day5Part2().run();
-        } catch (Exception e) {
-
+            new Day6Part2().run();
         } finally {
             var end = System.currentTimeMillis() - now;
             System.out.println("Run sec " + end / 1000d);
