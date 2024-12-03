@@ -1,3 +1,3 @@
-# Advent Of Code
+# Advent of Code
 
 If you are looking for clean code it is not your place ¯\\_(ツ)_/¯ 
