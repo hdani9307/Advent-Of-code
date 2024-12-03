@@ -1,0 +1,12 @@
+name: Run tests
+on: [ push ]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - run: ./gradlew clean build
+

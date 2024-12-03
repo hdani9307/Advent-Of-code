@@ -6,7 +6,7 @@ import kotlin.time.measureTimedValue
 
 fun readInput(fileName: String): List<String> {
     val absolutePath = File("").absolutePath
-    return File("$absolutePath/src/main/resources/$fileName")
+    return File("$absolutePath/src/test/resources/$fileName")
         .bufferedReader()
         .readLines()
 }
