@@ -3,37 +3,42 @@ package advent._2024.day2
 import advent.helper.readInput
 import advent.helper.runMeasured
 import kotlin.math.absoluteValue
+import kotlin.test.Test
 
-fun main() {
+class Day2Part1 {
 
-    val lines = readInput("2024/2.txt")
+    @Test
+    fun main() {
 
-    runMeasured {
-        var safeSum = 0
-        for (line in lines) {
-            var rootDecreasing = false
-            val levels = line.split(" ")
+        val lines = readInput("2024/2.txt")
 
-            var isSafe = false
-            for (i in 0..<levels.size - 1) {
-                val currentLevel = levels[i].toInt()
-                val nextLevel = levels[i + 1].toInt()
-                val difference = currentLevel - nextLevel
-                if (i == 0) {
-                    rootDecreasing = nextLevel < currentLevel
+        runMeasured {
+            var safeSum = 0
+            for (line in lines) {
+                var rootDecreasing = false
+                val levels = line.split(" ")
+
+                var isSafe = false
+                for (i in 0..<levels.size - 1) {
+                    val currentLevel = levels[i].toInt()
+                    val nextLevel = levels[i + 1].toInt()
+                    val difference = currentLevel - nextLevel
+                    if (i == 0) {
+                        rootDecreasing = nextLevel < currentLevel
+                    }
+                    val decreasing = nextLevel < currentLevel
+                    if (rootDecreasing == decreasing && (difference.absoluteValue in 1..3)) {
+                        isSafe = true
+                    } else {
+                        isSafe = false
+                        break
+                    }
                 }
-                val decreasing = nextLevel < currentLevel
-                if (rootDecreasing == decreasing && (difference.absoluteValue in 1..3)) {
-                    isSafe = true
-                } else {
-                    isSafe = false
-                    break
+                if (isSafe) {
+                    safeSum++
                 }
             }
-            if (isSafe) {
-                safeSum++
-            }
+            println(safeSum)
         }
-        println(safeSum)
     }
 }

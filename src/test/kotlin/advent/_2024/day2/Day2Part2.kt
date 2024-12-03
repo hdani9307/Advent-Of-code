@@ -3,50 +3,55 @@ package advent._2024.day2
 import advent.helper.readInput
 import advent.helper.runMeasured
 import kotlin.math.absoluteValue
+import kotlin.test.Test
 
-fun main() {
-    val lines = readInput("2024/2.txt")
+class Day2Part2 {
 
-    runMeasured {
-        var safeSum = 0
-        for (line in lines) {
-            val levels = line.split(" ")
-            var safe = isSafe(levels)
+    @Test
+    fun main() {
+        val lines = readInput("2024/2.txt")
 
-            if (!safe) {
-                for ((index, _) in levels.withIndex()) {
-                    val subList = levels.toMutableList()
-                    subList.removeAt(index)
-                    safe = isSafe(subList)
-                    if (safe) {
-                        break
+        runMeasured {
+            var safeSum = 0
+            for (line in lines) {
+                val levels = line.split(" ")
+                var safe = isSafe(levels)
+
+                if (!safe) {
+                    for ((index, _) in levels.withIndex()) {
+                        val subList = levels.toMutableList()
+                        subList.removeAt(index)
+                        safe = isSafe(subList)
+                        if (safe) {
+                            break
+                        }
                     }
                 }
-            }
 
-            if (safe) {
-                safeSum++
+                if (safe) {
+                    safeSum++
+                }
             }
+            println(safeSum)
         }
-        println(safeSum)
+
     }
 
-}
+    private fun isSafe(levels: List<String>): Boolean {
+        val rootDecreasing = levels[1].toInt() < levels[0].toInt()
+        for (i in 0..<levels.size - 1) {
+            val currentLevel = levels[i].toInt()
+            val nextLevel = levels[i + 1].toInt()
+            val difference = currentLevel - nextLevel
 
-private fun isSafe(levels: List<String>): Boolean {
-    val rootDecreasing = levels[1].toInt() < levels[0].toInt()
-    for (i in 0..<levels.size - 1) {
-        val currentLevel = levels[i].toInt()
-        val nextLevel = levels[i + 1].toInt()
-        val difference = currentLevel - nextLevel
-
-        val decreasing = nextLevel < currentLevel
-        if (rootDecreasing != decreasing) {
-            return false
+            val decreasing = nextLevel < currentLevel
+            if (rootDecreasing != decreasing) {
+                return false
+            }
+            if (difference.absoluteValue !in 1..3) {
+                return false
+            }
         }
-        if (difference.absoluteValue !in 1..3) {
-            return false
-        }
+        return true
     }
-    return true
 }

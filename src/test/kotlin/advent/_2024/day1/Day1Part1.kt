@@ -1,27 +1,32 @@
 import advent.helper.readInput
 import advent.helper.runMeasured
 import kotlin.math.absoluteValue
+import kotlin.test.Test
 
-fun main() {
+class Day1Part1 {
 
-    val lines = readInput("2024/1.txt")
+    @Test
+    fun main() {
 
-    runMeasured {
-        val left = mutableListOf<Int>()
-        val right = mutableListOf<Int>()
-        for (line in lines) {
-            val splits = line.split("   ")
-            left.add(splits[0].trim().toInt())
-            right.add(splits[1].trim().toInt())
+        val lines = readInput("2024/1.txt")
+
+        runMeasured {
+            val left = mutableListOf<Int>()
+            val right = mutableListOf<Int>()
+            for (line in lines) {
+                val splits = line.split("   ")
+                left.add(splits[0].trim().toInt())
+                right.add(splits[1].trim().toInt())
+            }
+            left.sort()
+            right.sort()
+
+            var sum = 0
+            for ((index, i) in left.withIndex()) {
+                val abs = (i - right[index]).absoluteValue
+                sum += abs
+            }
+            println(sum)
         }
-        left.sort()
-        right.sort()
-
-        var sum = 0
-        for ((index, i) in left.withIndex()) {
-            val abs = (i - right[index]).absoluteValue
-            sum += abs
-        }
-        println(sum)
     }
 }
