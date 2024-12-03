@@ -1,3 +1,5 @@
+package advent._2024.day2
+
 import advent.helper.readInput
 import advent.helper.runMeasured
 import kotlin.math.absoluteValue
