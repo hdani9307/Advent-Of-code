@@ -2,6 +2,7 @@ package advent._2024.day4
 
 import advent.helper.readInput
 import advent.helper.runMeasured
+import org.junit.jupiter.api.Assertions
 import kotlin.test.Test
 
 class Day4Part1 {
@@ -52,9 +53,8 @@ class Day4Part1 {
             }
             println("---")
 
-            // 2630 high
-            // 2575
-            println("Result $sum")
+            println(sum)
+            Assertions.assertEquals(2575, sum)
         }
     }
 
