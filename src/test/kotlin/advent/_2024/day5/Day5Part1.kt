@@ -27,6 +27,9 @@ class Day5Part1 {
                     val split = line.split(",")
                     var correct = true
                     for (i in split.withIndex()) {
+                        if (!correct) {
+                            break
+                        }
                         val value = i.value.trim()
                         val children = x[value]
                         val parents = y[value]

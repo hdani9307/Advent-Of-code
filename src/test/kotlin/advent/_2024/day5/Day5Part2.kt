@@ -9,7 +9,7 @@ class Day5Part2 {
 
     @Test
     fun run() {
-        val lines = readInput("2024/sample.txt")
+        val lines = readInput("2024/5.txt")
         runMeasured {
             val notCorrects = mutableListOf<String>()
             val x = mutableMapOf<String, MutableList<String>>()
@@ -30,6 +30,9 @@ class Day5Part2 {
                     val split = line.split(",")
                     var correct = true
                     for (i in split.withIndex()) {
+                        if (!correct) {
+                            break
+                        }
                         val value = i.value.trim()
                         val children = x[value]
                         val parents = y[value]
@@ -58,20 +61,25 @@ class Day5Part2 {
                     }
                 }
             }
-            val ordered = mutableListOf<String>()
+            val ordered = mutableListOf<List<String>>()
             for (notCorrect in notCorrects) {
-                val split = notCorrect.split(",").map { it.toInt() }.sorted()
-                ordered.add(split.joinToString(","))
+                notCorrect.split(",").sortedWith(Comparator { o1, o2 ->
+                    val child = x[o1]?.contains(o2) ?: false
+                    return@Comparator if (child) {
+                        1
+                    } else {
+                        -1
+                    }
+                }).also { ordered.add(it) }
             }
 
             var sum = 0
-            for (c in ordered) {
-                val split = c.split(",")
-                val middle = split[(split.size - 1) / 2]
+            for (list in ordered) {
+                val middle = list[(list.size - 1) / 2]
                 sum += middle.toInt()
             }
             println(sum)
-            Assertions.assertEquals(4578, sum)
+            Assertions.assertEquals(6179, sum)
         }
     }
 }
