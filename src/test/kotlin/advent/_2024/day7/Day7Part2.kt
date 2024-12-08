@@ -47,6 +47,9 @@ class Day7Part2 {
             accumulator.set(true)
             return
         }
+        if (node.value > target) {
+            return
+        }
         for (child in node.children) {
             findLastNode(child, target, accumulator)
         }
