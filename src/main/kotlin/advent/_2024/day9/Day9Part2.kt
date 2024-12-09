@@ -39,10 +39,9 @@ class Day9Part2 {
                     val freeSpace = withIndex.value.count { it == "." }
                     if (freeSpace >= rightestCluster.size) {
                         val tmp = mutableListOf<String>()
-                        for (j in 0 until rightestCluster.size) {
+                        for (item in rightestCluster) {
                             val firstFreeSpaceIndex = withIndex.value.indexOf(".")
-                            withIndex.value.removeAt(firstFreeSpaceIndex)
-                            withIndex.value.add(firstFreeSpaceIndex, rightestCluster[j])
+                            withIndex.value[firstFreeSpaceIndex] = item
                             tmp.add(".")
                         }
                         clusters[i] = tmp
