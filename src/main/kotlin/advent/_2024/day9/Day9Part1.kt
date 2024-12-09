@@ -22,8 +22,6 @@ class Day9Part1 {
                     index++
                 }
             }
-//            println("---EXPANDED---")
-//            println(expanded.reduce { acc, s -> acc + s })
 
             val compressed = mutableListOf<String>()
             var backIndex = expanded.size
@@ -42,14 +40,7 @@ class Day9Part1 {
                     compressed.add(withIndex.value)
                 }
             }
-//            println("compressed ...")
-//            println(compressed.reduce { acc, s -> acc + s })
 
-            //00...111...2...333.44.5555.6666.777.888899
-            //00...111...2...333.44.5555.6666.777.888899
-
-            //0099811188827773336446555566
-            //0099811188827773336446555566
             for (withIndex in compressed.withIndex()) {
                 sum += withIndex.value.toInt() * withIndex.index
             }
