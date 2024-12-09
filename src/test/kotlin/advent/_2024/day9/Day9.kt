@@ -12,7 +12,7 @@ class Day9 {
 
     @Test
     fun part2() {
-        Assertions.assertEquals(1333, Day9Part2().run())
+        Assertions.assertEquals(6326952672104, Day9Part2().run())
     }
 
 }
