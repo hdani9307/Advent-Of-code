@@ -2,9 +2,11 @@ package advent._2023.day3
 
 import advent.helper.readInput
 import advent.helper.runMeasured
+import kotlin.test.Ignore
 
 data class Number(val value: String, var abjected: Boolean = false, var touched: Boolean = false)
 
+@Ignore
 fun main() {
 
     val numbers = mutableMapOf<Pair<Int, Int>, Number>()

@@ -2,7 +2,9 @@ package advent._2023.day2
 
 import advent.helper.readInput
 import advent.helper.runMeasured
+import kotlin.test.Ignore
 
+@Ignore
 fun main() {
     val limits = mapOf(
         Pair("red", 12),

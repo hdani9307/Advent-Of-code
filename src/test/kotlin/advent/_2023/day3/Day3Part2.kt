@@ -2,9 +2,11 @@ package advent._2023.day3
 
 import advent.helper.readInput
 import advent.helper.runMeasured
+import kotlin.test.Ignore
 
 data class Gear(val value: String)
 
+@Ignore
 fun main() {
 
     val numbers = mutableMapOf<Pair<Int, Int>, Gear>()

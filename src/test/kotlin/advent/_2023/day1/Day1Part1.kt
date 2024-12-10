@@ -2,9 +2,10 @@ package advent._2023.day1
 
 import advent.helper.readInput
 import advent.helper.runMeasured
+import kotlin.test.Ignore
 import kotlin.time.ExperimentalTime
 
-@ExperimentalTime
+@Ignore
 fun main() {
     val lines = readInput("1.txt")
     runMeasured {

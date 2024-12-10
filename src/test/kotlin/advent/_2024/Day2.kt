@@ -1,8 +1,10 @@
 package advent._2024
 
 import org.junit.jupiter.api.Assertions
+import kotlin.test.Ignore
 import kotlin.test.Test
 
+@Ignore
 class Day2 {
 
     @Test

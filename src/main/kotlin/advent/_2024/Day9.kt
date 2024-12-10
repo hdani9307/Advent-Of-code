@@ -4,9 +4,9 @@ import advent.helper.readInput
 import advent.helper.runMeasured
 
 class Day9Part1 {
-    fun run(): Long {
+    fun run(fileName: String): Long {
         var sum = 0L
-        val lines = readInput("2024/9.txt")
+        val lines = readInput(fileName)
         val expanded = mutableListOf<String>()
         runMeasured {
             var index = 0
@@ -51,9 +51,9 @@ class Day9Part1 {
 }
 
 class Day9Part2 {
-    fun run(): Long {
+    fun run(fileName: String): Long {
         var sum = 0L
-        val lines = readInput("2024/9.txt")
+        val lines = readInput(fileName)
         val clusters = mutableListOf<MutableList<String>>()
         runMeasured {
             var index = 0

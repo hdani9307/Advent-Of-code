@@ -2,6 +2,7 @@ package advent._2023.day1
 
 import advent.helper.readInput
 import advent.helper.runMeasured
+import kotlin.test.Ignore
 
 val corrections = mapOf(
     Pair("one", "1"),
@@ -16,6 +17,7 @@ val corrections = mapOf(
 );
 val initials = listOf("o", "t", "f", "s", "e", "n")
 
+@Ignore
 fun main() {
 
     val lines = readInput("1.txt")

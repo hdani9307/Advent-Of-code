@@ -17,9 +17,9 @@ class Day10Part1 {
         Pair(0, -1)     // Left
     )
 
-    fun run(): Long {
+    fun run(inputFile: String): Long {
         var sum = 0L
-        val lines = readInput("2024/10.txt")
+        val lines = readInput(inputFile)
         val headNodes = mutableListOf<Node>()
 
         runMeasured {
@@ -95,9 +95,9 @@ class Day10Part2 {
         Pair(0, -1)     // Left
     )
 
-    fun run(): Long {
+    fun run(inputFile: String): Long {
         val sum = AtomicLong(0)
-        val lines = readInput("2024/10.txt")
+        val lines = readInput(inputFile)
         val headNodes = mutableListOf<Node>()
 
         runMeasured {

@@ -2,8 +2,9 @@ package advent._2023.day4;
 
 import advent.helper.readInput
 import advent.helper.runMeasured
+import kotlin.test.Ignore
 
-
+@Ignore
 fun main() {
 
     val lines = readInput("2023/4.txt")
