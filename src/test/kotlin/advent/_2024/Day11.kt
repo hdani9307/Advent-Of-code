@@ -10,6 +10,10 @@ class Day11 {
         Assertions.assertEquals(55312, Day11Part1().solve("2024/11.sample.txt", 25))
     }
 
+    @Test
+    fun part2Test() {
+        Assertions.assertEquals(55312, Day11Part2().solve("2024/11.sample.txt", 25))
+    }
 
     @Test
     fun part1() {
@@ -18,6 +22,6 @@ class Day11 {
 
     @Test
     fun part2() {
-        Assertions.assertEquals(1483, Day11Part1().solve("2024/11.txt", 75))
+        Assertions.assertEquals(240884656550923, Day11Part2().solve("2024/11.txt", 75))
     }
 }
