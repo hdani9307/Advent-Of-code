@@ -23,6 +23,20 @@ fun List<String>.toMatrix(): List<List<Char>> {
     return matrix
 }
 
+fun List<List<Char>>.printMatrix() {
+    println()
+    for (chars in this) {
+        for (char in chars) {
+            print(char)
+        }
+        println()
+    }
+}
+
+fun List<List<Char>>.copy(): MutableList<MutableList<Char>> {
+    return this.map { row -> row.toMutableList() }.toMutableList()
+}
+
 fun <T> List<List<T>>.transpose(): List<List<T>> {
     return (this[0].indices).map { i -> (this.indices).map { j -> this[j][i] } }
 }
