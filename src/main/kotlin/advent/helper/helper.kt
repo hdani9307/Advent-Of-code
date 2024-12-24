@@ -23,7 +23,7 @@ fun List<String>.toMatrix(): List<List<Char>> {
     return matrix
 }
 
-fun List<List<Char>>.printMatrix() {
+fun <E> List<List<E>>.printMatrix() {
     println()
     for (chars in this) {
         for (char in chars) {
@@ -41,10 +41,11 @@ fun <T> List<List<T>>.transpose(): List<List<T>> {
     return (this[0].indices).map { i -> (this.indices).map { j -> this[j][i] } }
 }
 
-fun <T> runMeasured(block: () -> T) {
-    val (_: T, duration: Duration) = measureTimedValue {
+fun <T> runMeasured(block: () -> T): T {
+    val (result: T, duration: Duration) = measureTimedValue {
         block()
     }
 
     println("${duration.inWholeMilliseconds} ms.")
+    return result
 }
