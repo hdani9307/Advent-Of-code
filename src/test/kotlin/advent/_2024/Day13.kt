@@ -13,7 +13,7 @@ class Day13 {
 
     @Test
     fun part2Test() {
-        Assertions.assertEquals(480, Day13Part2().solve("2024/13.sample.txt"))
+        Assertions.assertEquals(875318608908, Day13Part2().solve("2024/13.sample.txt"))
     }
 
     @Test
